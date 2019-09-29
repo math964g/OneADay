@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Mansalva', cursive;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  /* For browser who doesn't suppoert gradient */
+  background: #fd5e53;
+  background: linear-gradient(
+    to bottom,
+    #df2545 0%,
+    #dba013 100%
+    );
+}
+
+.box {
+  height: 45vh;
+  width: 50vw;
+  border-radius: 100px;
+  background: #FFFFFF;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 12px 12px #000000;
+}
+
+.box p {
+  font-size: 52px;
+  font-family: "Mansalva", cursive;
+  text-align: center;
+}
