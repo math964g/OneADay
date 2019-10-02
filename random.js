@@ -5,7 +5,7 @@ function getRandomChallenge()
         "Stop procastinating &#9203;",
         "Do it, TODAY &#128581;",
         "Compliment a person today",
-        "Be at work/study without posing",
+        "Be at work/school without posing",
         "Jump into a huge body of water (BONUS at night)",
         "Meetup with a group of strangers",
         "Confess true feelings to someone, good or bad",
@@ -54,6 +54,14 @@ function getRandomChallenge()
 
 getRandomChallenge();
 
-window.onload = function() {
-    document.getElementById("play_audio").play();
+var audio = new Audio("audio/ifwefall.mp3") ;
+
+audio.oncanplaythrough = function(){
+audio.play();
+}
+
+audio.loop = true;
+
+audio.onended = function(){
+audio.play();
 }
