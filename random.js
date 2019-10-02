@@ -53,3 +53,7 @@ function getRandomChallenge()
 }
 
 getRandomChallenge();
+
+window.onload = function() {
+    document.getElementById("play_audio").play();
+}
