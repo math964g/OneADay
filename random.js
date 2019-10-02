@@ -1,5 +1,3 @@
-console.log("random.js loaded");
-
 function getRandomChallenge()
 {
     var challenges = [
@@ -10,10 +8,11 @@ function getRandomChallenge()
     ];
 
     // return challenges[Math.floor(Math.random() * names.length)];
-    var loadedchallenge = challenges[Math.floor(Math.random() * names.length)];
+    var loadedchallenge = challenges[Math.floor(Math.random() * challenges.length)];
 
-    var output = document.getElementById('challengeoutput');
-    output.innerHTML = loadedchallenge;
+    var output = document.getElementById("boxtxt").innerHTML;
+    var res = output.replace("Contact maintenance", loadedchallenge);
+    document.getElementById("boxtxt").innerHTML = res;
 }
 
 getRandomChallenge();

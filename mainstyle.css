@@ -40,4 +40,14 @@ body {
   font-size: 52px;
   font-family: "Mansalva", cursive;
   text-align: center;
+  margin: 10vw;
+}
+
+@media only screen and (max-width: 800px) {
+
+  .box p {
+    background-color: blue;
+    margin: 50vw !important;
+  }
+
 }
