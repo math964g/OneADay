@@ -54,7 +54,7 @@ function getRandomChallenge()
 
 getRandomChallenge();
 
-var audio = new Audio("audio/ifwefall.mp3") ;
+var audio = new Audio("audio/vibes.mp3") ;
 
 audio.oncanplaythrough = function(){
 audio.play();
