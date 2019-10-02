@@ -1,10 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+/* font-family: 'Mansalva', cursive; */
+
+@import url('https://fonts.googleapis.com/css?family=Ranga&display=swap');
+/* font-family: 'Ranga', cursive; */
+
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
+/* font-family: 'Permanent Marker', cursive; */
+
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+/* font-family: 'Courgette', cursive; */
+
+@import url('https://fonts.googleapis.com/css?family=Kalam&display=swap');
+/* font-family: 'Kalam', cursive; */
 
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: 'Mansalva', cursive;
 }
 
 html {
@@ -14,11 +26,9 @@ html {
 body {
   /* For browser who doesn't suppoert gradient */
   background: #fd5e53;
-  background: linear-gradient(
-    to bottom,
-    #df2545 0%,
-    #dba013 100%
-    );
+  background: linear-gradient(to bottom,
+      #df2545 0%,
+      #dba013 100%);
 }
 
 .box {
@@ -29,25 +39,35 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
+  /* Moves the box so it's centered to the middle of the screen */
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 12px 12px #000000;
+  box-shadow: 12px 12px #252525;
 }
 
 .box p {
   font-size: 52px;
   font-family: "Mansalva", cursive;
   text-align: center;
-  margin: 10vw;
+  margin: 8vw;
+
 }
 
-@media only screen and (max-width: 800px) {
+/* STANDARD SCREEN */
+@media only screen and (max-width: 1080px) {
 
+}
+
+/* MOBILE */
+@media only screen and (max-width: 768px) {
   .box p {
-    background-color: blue;
-    margin: 50vw !important;
+    font-size: 32px;
+    margin: 5vw;
+    /* Breaks long words on mobile */
+    word-break: break-word;
+    /* Auto adds hyphens, except in Chrome */
+    hyphens: auto;
   }
-
 }
