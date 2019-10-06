@@ -111,5 +111,6 @@ function countingClock() {
   if (distance < 0) {
     clearInterval(x);
     document.getElementById("clock").innerHTML = "EXPIRED";
+    getRandomChallenge();
   }
 }
