@@ -1,5 +1,14 @@
 console.log("JS running");
 
+// Ghetto fix for challenge
+
+current = document.getElementById("boxtxt").innerHTML;
+
+if (current == "Contant maintenance") {
+  var res = output.replace("Contact maintenance", prev);
+    document.getElementById("boxtxt").innerHTML = res;
+}
+
 // 24-hour clock
 
 var tick;
@@ -47,6 +56,8 @@ function clock() {
   }
 }
 
+// Challenge library
+
 var prev = localStorage.getItem("prevChallenge");
 
 function getRandomChallenge() {
@@ -84,8 +95,9 @@ function getRandomChallenge() {
     // "Wear an out of character outfit",
     // "Don't drink the water in the wishing well &#128689;",
     // "Do a 20 minute workout &#127947;"
-    "Test 1",
-    "Test 2"
+    "Smile",
+    "Sing",
+    "Dance"
   ];
 
   loadedchallenge = challenges[Math.floor(Math.random() * challenges.length)];
