@@ -1,3 +1,52 @@
+console.log("JS running");
+
+// 24-hour clock
+
+var tick;
+
+// Stops the clock
+function stop() {
+  clearTimeout(tick);
+}
+
+function clock() {
+  var counter = new Date();
+  var hour, minute, second;
+  var time = "";
+
+  // Gets the current time
+  hour = counter.getHours();
+  minute = counter.getMinutes();
+  second = counter.getSeconds();
+
+  // Puts a 0 in front of the second, to keep it at 2 digits - :07 instead of :7
+  if (second <= 9) {
+    second = "0" + second;
+  }
+
+  // Puts a 0 in front of the minute, to keep it at 2 digits - :07 instead of :7
+  if (minute <= 9) {
+    minute = "0" + minute;
+  }
+
+  // Puts a 0 in front of the hour, to keep it at 2 digits - :07 instead of :7
+  if (hour <= 9) {
+    hour = "0" + hour;
+  }
+
+  // Combines our second, minute, hour variables
+  time += hour + ":" + minute + ":" + second;
+  // Replaces the new time in our HTML
+  document.getElementById('clock').innerHTML = time;
+  // Repeats it every second
+  tick = setTimeout("clock()", 1000);
+
+  // Gets a new challenge at midnight
+  if (time == "00:00:00") {
+    getRandomChallenge();
+  }
+}
+
 var prev = localStorage.getItem("prevChallenge");
 
 function getRandomChallenge() {
@@ -39,16 +88,12 @@ function getRandomChallenge() {
     "Test 2"
   ];
 
+  loadedchallenge = challenges[Math.floor(Math.random() * challenges.length)];
+
+  while (loadedchallenge == prev) {
+    // Picks a random challenge
     loadedchallenge = challenges[Math.floor(Math.random() * challenges.length)];
-
-
-
-    while (loadedchallenge == prev) {
-      // Picks a random challenge
-      loadedchallenge = challenges[Math.floor(Math.random() * challenges.length)];
-    }
-
-
+  }
 
   var output = document.getElementById("boxtxt").innerHTML;
 
@@ -58,14 +103,12 @@ function getRandomChallenge() {
   var res = output.replace("Contact maintenance", loadedchallenge);
   document.getElementById("boxtxt").innerHTML = res;
 
-// TODO: Add a day counter to show how many challenges are left / challenge counter
-// TODO: take things out of the array, so in the end it'll be empty. This allows to run all the challenges through without repetition of one
+  // TODO: Add a day counter to show how many challenges are left / challenge counter
+  // TODO: take things out of the array, so in the end it'll be empty. This allows to run all the challenges through without repetition of one
   // TODO: Need to implement a function that switches the challenge every 24-hour instead of on-load
   // TODO: Needs to make sure a challenge isn't repeated until 3 days or so after it's first apperance
   // IDEA: Add a timeframe of when the challenge has to be completed - Not just 24 hours, but some of them maybe 3 days - Allows you to plan the challenge and execute it if it's more complicated
 }
-
-getRandomChallenge();
 
 // Audio player
 var audio = new Audio("audio/vibes.mp3");
@@ -79,43 +122,3 @@ audio.loop = true;
 audio.onended = function() {
   audio.play();
 }
-
-
-// The 24-hour countdown clock
-
-// Set the date we're counting down to
-// var countDownDate = new Date("2020 15:37:25").getTime();
-
-// var today = new Date();
-// // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-// var countDownDate = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-//
-// // Update the count down every 1 second
-// var x = setInterval(countingClock, 1000);
-//
-//
-// function countingClock() {
-//
-//   // Get today's date and time
-//   var now = new Date().getTime();
-//
-//   // Find the distance between now and the count down date
-//   var distance = countDownDate - now;
-//
-//   // Time calculations for days, hours, minutes and seconds
-//   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-//   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-//   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-//   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-//
-//   // Output the result in an element with id="demo"
-//   document.getElementById("clock").innerHTML = days + "d " + hours + "h "
-//   + minutes + "m " + seconds + "s ";
-//
-//   // If the count down is over, write some text
-//   if (distance < 0) {
-//     clearInterval(x);
-//     document.getElementById("clock").innerHTML = "EXPIRED";
-//     getRandomChallenge();
-//   }
-// }

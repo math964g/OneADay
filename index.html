@@ -11,7 +11,13 @@
   <title>Enjoy life</title>
 </head>
 
-<body>
+<body onload="clock();" onunload="stop();">
+
+<div class="clock_wrapper">
+
+  <p><span id="clock"></span></p>
+
+</div>
 
 <input type="image" src="https://static.thenounproject.com/png/5804-200.png" onclick="audio.play()">
 
