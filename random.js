@@ -1,13 +1,10 @@
 console.log("JS running");
 
-// Ghetto fix for challenge
+// Loads previously assigned variable
+var prev = localStorage.getItem("prevChallenge");
 
-current = document.getElementById("boxtxt").innerHTML;
-
-if (current == "Contant maintenance") {
-  var res = output.replace("Contact maintenance", prev);
-    document.getElementById("boxtxt").innerHTML = res;
-}
+// Assigns the previous challenge to the box
+document.getElementById("boxtxt").innerHTML = prev;
 
 // 24-hour clock
 
@@ -57,8 +54,6 @@ function clock() {
 }
 
 // Challenge library
-
-var prev = localStorage.getItem("prevChallenge");
 
 function getRandomChallenge() {
   var challenges = [
@@ -110,10 +105,11 @@ function getRandomChallenge() {
   var output = document.getElementById("boxtxt").innerHTML;
 
   prev = loadedchallenge;
+
+  // Assigns variable to be used in next site load
   localStorage.setItem("prevChallenge", prev);
 
-  var res = output.replace("Contact maintenance", loadedchallenge);
-  document.getElementById("boxtxt").innerHTML = res;
+  document.getElementById("boxtxt").innerHTML = loadedchallenge;
 
   // TODO: Add a day counter to show how many challenges are left / challenge counter
   // TODO: take things out of the array, so in the end it'll be empty. This allows to run all the challenges through without repetition of one
