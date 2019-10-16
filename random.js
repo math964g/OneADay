@@ -110,12 +110,6 @@ function getRandomChallenge() {
   localStorage.setItem("prevChallenge", prev);
 
   document.getElementById("boxtxt").innerHTML = loadedchallenge;
-
-  // TODO: Add a day counter to show how many challenges are left / challenge counter
-  // TODO: take things out of the array, so in the end it'll be empty. This allows to run all the challenges through without repetition of one
-  // TODO: Need to implement a function that switches the challenge every 24-hour instead of on-load
-  // TODO: Needs to make sure a challenge isn't repeated until 3 days or so after it's first apperance
-  // IDEA: Add a timeframe of when the challenge has to be completed - Not just 24 hours, but some of them maybe 3 days - Allows you to plan the challenge and execute it if it's more complicated
 }
 
 // Audio player
