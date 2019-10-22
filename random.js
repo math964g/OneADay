@@ -90,9 +90,9 @@ function getRandomChallenge() {
     // "Wear an out of character outfit",
     // "Don't drink the water in the wishing well &#128689;",
     // "Do a 20 minute workout &#127947;"
-    "Smile",
-    "Sing",
-    "Dance"
+    "Test 1",
+    "Test 2",
+    "Test 3"
   ];
 
   loadedchallenge = challenges[Math.floor(Math.random() * challenges.length)];
