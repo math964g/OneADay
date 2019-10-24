@@ -8,14 +8,17 @@
   <link rel="stylesheet" href="mainstyle.css">
   <!-- <link rel="stylesheet" href="clock.css"> -->
   <!-- <script src="clock.js" defer></script> -->
-  <title>Enjoy life</title>
+  <title>Front</title>
+  <!-- <title>Enjoy life</title> -->
 </head>
 
-<body>
+<body onload="clock();" onunload="stop();">
 
-  <div class="countdown_timer">
-    <p id="clock"></p>
-  </div>
+<div class="clock_wrapper">
+
+  <p><span id="clock"></span></p>
+
+</div>
 
 <input type="image" src="https://static.thenounproject.com/png/5804-200.png" onclick="audio.play()">
 
@@ -28,10 +31,6 @@
     </div>
 
   </div>
-
-  <!-- TODO: Grid setup, for easier compatability across platforms and better responsiveness -->
-  <!-- TODO: A button which spits out a new challenge -->
-  <!-- <button type="button" name="challenge_start">Challenge me!</button> -->
 
   <script src="random.js"></script>
 </body>
