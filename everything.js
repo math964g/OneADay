@@ -73,36 +73,34 @@ function clock() {
 
 // New challenge
 
-var yesterday;
 var today = new Date();
 console.log(today);
-var dateButton = document.getElementById("loaddate");
 
 // Retrieve date and challenge info
-dateButton.addEventListener("click", function() {
-  var dateRequest = new XMLHttpRequest();
-  dateRequest.open("GET", "https://pastebin.com/raw/94VDgbwy");
-  dateRequest.onload = function() {
-    var dateData = JSON.parse(dateRequest.responseText);
-    console.log(dateData);
-  };
-
-  dateRequest.send();
-});
-
 var dateRequest = new XMLHttpRequest();
-
-dateRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/date.json");
-
+dateRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/date2.json");
 dateRequest.onload = function() {
-  // Parses the data as JSON, basically converting it into code instead of a string
+  console.log(yesterday);
   var dateData = JSON.parse(dateRequest.responseText);
-  console.log(dateData);
+  console.log(dateData[0]);
+  yesterday = dateData[0].date;
+  console.log(dateData[1]);
+  var yesterdayChallenge = dateData[1].challenge;
+
+  matchDates(today, yesterday, yesterdayChallenge);
 };
+dateRequest.send();
 
 
 
 // Match date info
+function matchDate(today, yesterday, yesterdayChallenge) {
+  if (today == yesterday) {
+    pasteChallenge(yesterdayChallenge)
+  } else {
+    // New challenge
+  }
+};
 
 // Retrieve new challenge
 
