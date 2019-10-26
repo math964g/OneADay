@@ -97,8 +97,7 @@ dateRequest.send();
 
 // Match date info
 function matchDates(today, yesterday, yesterdayChallenge) {
-  yesterday = today; /*WARNING: This has to be deleted when it's live*/
-  if (today == "x") {
+  if (today == yesterday) {
     pasteChallenge(yesterdayChallenge)
   } else {
     var date = today;
@@ -108,13 +107,11 @@ function matchDates(today, yesterday, yesterdayChallenge) {
 
 // Push new date & challenge info
 function saveDate(date, loadedChallenge) {
-  var object = [date, loadedChallenge];
+  var object = [date, loadedChallenge]; /* Only for testing purposes */
   var datePush = new XMLHttpRequest();
-  datePush.open("POST", "http://godske.one/OneADay/OneADay/date.json");
+  datePush.open("POST", "http://godske.one/OneADay/OneADay/date.json", true);
   datePush.setRequestHeader("Content-Type", "application/json");
-  debugger;
-  var newChallenge = JSON.stringify(object);
-  debugger;
+  var newChallenge = JSON.stringify({name:"John Doe", time:"3am"});
   datePush.send(newChallenge);
   debugger;
 };
