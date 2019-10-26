@@ -1,11 +1,8 @@
 console.log("JS running");
 
-// Challenge retrieval + challenge paster
+// Retrieve challenge
 
-var chalBox = document.getElementById("boxtxt");
-var chalButton = document.getElementById("loadnew");
-
-chalButton.addEventListener("click", function() {
+function retrieveChallenge(yesterdayChallenge) {
   // Creates a new XMLHttpRequest
   var challengeRequest = new XMLHttpRequest();
   // Opens the page and retrieves the information
@@ -15,12 +12,12 @@ chalButton.addEventListener("click", function() {
   challengeRequest.onload = function() {
     // Parses the data as JSON, basically converting it into code instead of a string
     var challengeData = JSON.parse(challengeRequest.responseText);
-    pasteChallenge(challengeData);
+    getRandomChallenge(challengeData, yesterdayChallenge);
   };
 
   // This sends the XMLHttpRequest we created, to the internetz
   challengeRequest.send();
-});
+};
 
 function pasteChallenge(selectedChallenge) {
   document.getElementById("boxtxt").innerHTML = selectedChallenge;
@@ -78,6 +75,7 @@ var today = new Date();
 getToday();
 
 function getToday() {
+  // Apperantly this ".toString()" decides the entire thing is a string and yeah otherwise i'd just show the number 2054 like wtf
   var day = today.getDate().toString();
   var month = today.getMonth();
   var year = today.getFullYear();
@@ -86,7 +84,7 @@ function getToday() {
 
 // Retrieve date and challenge info
 var dateRequest = new XMLHttpRequest();
-dateRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/date2.json");
+dateRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/date.json");
 dateRequest.onload = function() {
   var dateData = JSON.parse(dateRequest.responseText);
   console.log(dateData[0]);
@@ -97,22 +95,18 @@ dateRequest.onload = function() {
 };
 dateRequest.send();
 
-"Sat Oct 26 2019 23:16:40 GMT+0200 (Centraleuropæisk sommertid)"
-"Sat Oct 26 2019 21:49:44 GMT+0200 (Centraleuropæisk sommertid)"
-
-
 // Match date info
 function matchDates(today, yesterday, yesterdayChallenge) {
-// WARNING: CHANGE THE ONE ARGUMENT TO "yesterday" - It's only like this for constant functionality while coding
-  if (today == yesterday) {
-    debugger;
+  yesterday = today; /*WARNING: This has to be deleted when it's live*/
+  if (today == "x") {
     pasteChallenge(yesterdayChallenge)
-  } else {
-    // New challenge
+  }
+
+  else {
+    retrieveChallenge(yesterdayChallenge);
   }
 };
 
-// Retrieve new challenge
 
 // Store new date & challenge info
 
@@ -120,32 +114,21 @@ function matchDates(today, yesterday, yesterdayChallenge) {
 
 
 
-// Loads previously assigned variable
-// var prev = localStorage.getItem("prevChallenge");
-
-// Assigns the previous challenge to the box
-// document.getElementById("boxtxt").innerHTML = prev;
 
 
-// Challenge picker
+// Challenge randomizer
 
-function getRandomChallenge(data) {
+function getRandomChallenge(data, yesterdayChallenge) {
 
-  loadedchallenge = data[Math.floor(Math.random() * data.length)].description;
+  var loadedChallenge = data[Math.floor(Math.random() * data.length)].description;
 
-  while (loadedchallenge == prev) {
+  while (loadedChallenge == yesterdayChallenge) {
     // Picks a random challenge
-    loadedchallenge = data[Math.floor(Math.random() * data.length)].description;
+    loadedChallenge = data[Math.floor(Math.random() * data.length)].description;
   }
 
-  var output = document.getElementById("boxtxt").innerHTML;
+  pasteChallenge(loadedChallenge);
 
-  prev = loadedchallenge;
-
-  // Assigns variable to be used in next site load
-  localStorage.setItem("prevChallenge", prev);
-
-  document.getElementById("boxtxt").innerHTML = loadedchallenge;
 }
 
 // Audio player
