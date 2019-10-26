@@ -103,7 +103,7 @@ dateRequest.send();
 
 // Match date info
 function matchDates(today, yesterday, yesterdayChallenge) {
-  debugger;
+// WARNING: CHANGE THE ONE ARGUMENT TO "yesterday" - It's only like this for constant functionality while coding
   if (today == yesterday) {
     debugger;
     pasteChallenge(yesterdayChallenge)
