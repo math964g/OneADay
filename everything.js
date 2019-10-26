@@ -81,7 +81,7 @@ var dateButton = document.getElementById("loaddate");
 // Retrieve date and challenge info
 dateButton.addEventListener("click", function() {
   var dateRequest = new XMLHttpRequest();
-  dateRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/date.json");
+  dateRequest.open("GET", "https://pastebin.com/raw/94VDgbwy");
   dateRequest.onload = function() {
     var dateData = JSON.parse(dateRequest.responseText);
     console.log(dateData);
