@@ -2,7 +2,7 @@ console.log("JS running");
 
 // Retrieve challenge
 
-function retrieveChallenge(yesterdayChallenge) {
+function retrieveChallenge(yesterdayChallenge, date) {
   // Creates a new XMLHttpRequest
   var challengeRequest = new XMLHttpRequest();
   // Opens the page and retrieves the information
@@ -12,7 +12,7 @@ function retrieveChallenge(yesterdayChallenge) {
   challengeRequest.onload = function() {
     // Parses the data as JSON, basically converting it into code instead of a string
     var challengeData = JSON.parse(challengeRequest.responseText);
-    getRandomChallenge(challengeData, yesterdayChallenge);
+    getRandomChallenge(challengeData, yesterdayChallenge, date);
   };
 
   // This sends the XMLHttpRequest we created, to the internetz
@@ -100,25 +100,28 @@ function matchDates(today, yesterday, yesterdayChallenge) {
   yesterday = today; /*WARNING: This has to be deleted when it's live*/
   if (today == "x") {
     pasteChallenge(yesterdayChallenge)
-  }
-
-  else {
-    retrieveChallenge(yesterdayChallenge);
+  } else {
+    var date = today;
+    retrieveChallenge(yesterdayChallenge, date);
   }
 };
 
-
-// Store new date & challenge info
-
-// Push today's challenge to the JSON file
-
-
-
-
+// Push new date & challenge info
+function saveDate(date, loadedChallenge) {
+  var object = [date, loadedChallenge];
+  var datePush = new XMLHttpRequest();
+  datePush.open("POST", "http://godske.one/OneADay/OneADay/date.json");
+  datePush.setRequestHeader("Content-Type", "application/json");
+  debugger;
+  var newChallenge = JSON.stringify(object);
+  debugger;
+  datePush.send(newChallenge);
+  debugger;
+};
 
 // Challenge randomizer
 
-function getRandomChallenge(data, yesterdayChallenge) {
+function getRandomChallenge(data, yesterdayChallenge, date) {
 
   var loadedChallenge = data[Math.floor(Math.random() * data.length)].description;
 
@@ -128,6 +131,7 @@ function getRandomChallenge(data, yesterdayChallenge) {
   }
 
   pasteChallenge(loadedChallenge);
+  saveDate(date, loadedChallenge);
 
 }
 
