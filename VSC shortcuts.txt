@@ -1,0 +1,2 @@
+Fix indentation = shift + alt + f
+Multiple cursors = alt + left click

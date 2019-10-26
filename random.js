@@ -10,10 +10,6 @@ document.getElementById("boxtxt").innerHTML = prev;
 
 var tick;
 
-// Stops the clock
-function stop() {
-  clearTimeout(tick);
-}
 
 function clock() {
   var counter = new Date();
