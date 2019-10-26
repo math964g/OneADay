@@ -1,5 +1,48 @@
 console.log("JS running");
 
+var chalBox = document.getElementById("boxtxt");
+var chalButton = document.getElementById("loadnew");
+
+chalButton.addEventListener("click", function() {
+  // Creates a new XMLHttpRequest
+  var challengeRequest = new XMLHttpRequest();
+
+  // Opens the page and retrieves the information
+  // "GET" = reading ... "POST" = posting ... Second argument is the link from where to get the info
+  challengeRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/challenges.json");
+
+  // When the request is loaded on the client browser, do the function
+  challengeRequest.onload = function() {
+    // Error handling
+    // If successfull - continue
+    if (challengeRequest.status >= 200 && challengeRequest.status < 400) {
+      // Parses the data as JSON, basically converting it into code instead of a string
+      var challengeData = JSON.parse(challengeRequest.responseText);
+
+      pasteChallenge(challengeData);
+    }
+    // If unsuccessfull - Throw sorry message in the users face
+    else {
+      chalBox.innerHTML = "Sorry, i did an oopsie"
+    }
+  };
+
+  challengeRequest.onerror = funciton() {
+    chalBox.innerHTML = "Sorry, i did an oopsie";
+  };
+
+  // This sends the XMLHttpRequest we created, to the internetz
+  challengeRequest.send();
+});
+
+function pasteChallenge(data) {
+  chalBox.innerHTML = data[Math.floor(Math.random() * data.length)].description;
+};
+
+
+
+
+
 // Loads previously assigned variable
 var prev = localStorage.getItem("prevChallenge");
 
@@ -108,24 +151,15 @@ function getRandomChallenge() {
   document.getElementById("boxtxt").innerHTML = loadedchallenge;
 }
 
-// Audio player
-var audio = new Audio("audio/vibes.mp3");
-
-audio.oncanplaythrough = function() {
-  audio.play();
-}
-
-audio.loop = true;
-
-audio.onended = function() {
-  audio.play();
-}
-
-
-
-
-let challengeRequest = XMLHttpRequest();
-challengeRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/challenges.json?token=AKMFPJYJTDSEOAAGEBMXGNS5WSA32");
-challengeRequest.onLoad = function() {
-  console.log("Jason loaded, ready to kill");
-};
+// // Audio player
+// var audio = new Audio("audio/vibes.mp3");
+//
+// audio.oncanplaythrough = function() {
+//   audio.play();
+// }
+//
+// audio.loop = true;
+//
+// audio.onended = function() {
+//   audio.play();
+// }
