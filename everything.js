@@ -73,8 +73,41 @@ function clock() {
 
 // New challenge
 
+var yesterday;
 var today = new Date();
 console.log(today);
+var dateButton = document.getElementById("loaddate");
+
+// Retrieve date and challenge info
+dateButton.addEventListener("click", function() {
+  var dateRequest = new XMLHttpRequest();
+  dateRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/date.json");
+  dateRequest.onload = function() {
+    var dateData = JSON.parse(dateRequest.responseText);
+    console.log(dateData);
+  };
+
+  dateRequest.send();
+});
+
+var dateRequest = new XMLHttpRequest();
+
+dateRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/date.json");
+
+dateRequest.onload = function() {
+  // Parses the data as JSON, basically converting it into code instead of a string
+  var dateData = JSON.parse(dateRequest.responseText);
+  console.log(dateData);
+};
+
+
+
+// Match date info
+
+// Retrieve new challenge
+
+// Store new date & challenge info
+
 
 // Same day
 if (today == yesterday && todayChallenge == yesterdayChallenge) {
