@@ -120,3 +120,12 @@ audio.loop = true;
 audio.onended = function() {
   audio.play();
 }
+
+
+
+
+let challengeRequest = XMLHttpRequest();
+challengeRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/challenges.json?token=AKMFPJYJTDSEOAAGEBMXGNS5WSA32");
+challengeRequest.onLoad = function() {
+  console.log("Jason loaded, ready to kill");
+};
