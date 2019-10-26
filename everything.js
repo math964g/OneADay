@@ -22,8 +22,8 @@ chalButton.addEventListener("click", function() {
   challengeRequest.send();
 });
 
-function pasteChallenge(data) {
-  getRandomChallenge(data);
+function pasteChallenge(selectedChallenge) {
+  document.getElementById("boxtxt").innerHTML = selectedChallenge;
   // chalBox.innerHTML = data[Math.floor(Math.random() * data.length)].description;
 };
 
@@ -74,28 +74,38 @@ function clock() {
 // New challenge
 
 var today = new Date();
-console.log(today);
+
+getToday();
+
+function getToday() {
+  var day = today.getDate().toString();
+  var month = today.getMonth();
+  var year = today.getFullYear();
+  today = day + month + year;
+};
 
 // Retrieve date and challenge info
 var dateRequest = new XMLHttpRequest();
 dateRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/date2.json");
 dateRequest.onload = function() {
-  console.log(yesterday);
   var dateData = JSON.parse(dateRequest.responseText);
   console.log(dateData[0]);
-  yesterday = dateData[0].date;
+  var yesterday = dateData[0].date;
   console.log(dateData[1]);
   var yesterdayChallenge = dateData[1].challenge;
-
   matchDates(today, yesterday, yesterdayChallenge);
 };
 dateRequest.send();
 
+"Sat Oct 26 2019 23:16:40 GMT+0200 (Centraleuropæisk sommertid)"
+"Sat Oct 26 2019 21:49:44 GMT+0200 (Centraleuropæisk sommertid)"
 
 
 // Match date info
-function matchDate(today, yesterday, yesterdayChallenge) {
+function matchDates(today, yesterday, yesterdayChallenge) {
+  debugger;
   if (today == yesterday) {
+    debugger;
     pasteChallenge(yesterdayChallenge)
   } else {
     // New challenge
@@ -106,24 +116,15 @@ function matchDate(today, yesterday, yesterdayChallenge) {
 
 // Store new date & challenge info
 
-
-// Same day
-if (today == yesterday && todayChallenge == yesterdayChallenge) {
-  //TODO: Do nothing - but assign yesterday challenge to the "boxtxt"
-}
-
-// New day
-else {
-  // TODO: Get a new challenge from the server
-}
-
 // Push today's challenge to the JSON file
 
+
+
 // Loads previously assigned variable
-var prev = localStorage.getItem("prevChallenge");
+// var prev = localStorage.getItem("prevChallenge");
 
 // Assigns the previous challenge to the box
-document.getElementById("boxtxt").innerHTML = prev;
+// document.getElementById("boxtxt").innerHTML = prev;
 
 
 // Challenge picker
