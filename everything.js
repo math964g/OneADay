@@ -105,16 +105,30 @@ function matchDates(today, yesterday, yesterdayChallenge) {
   }
 };
 
-// Push new date & challenge info
-function saveDate(date, loadedChallenge) {
-  var object = [date, loadedChallenge]; /* Only for testing purposes */
-  var datePush = new XMLHttpRequest();
-  datePush.open("POST", "http://godske.one/OneADay/OneADay/date.json", true);
-  datePush.setRequestHeader("Content-Type", "application/json");
-  var newChallenge = JSON.stringify({name:"John Doe", time:"3am"});
-  datePush.send(newChallenge);
-  debugger;
+clickMe();
+
+function clickMe() {
+
+
+$.ajax({
+    type: "POST",
+    url: 'savedatedata.php',
+    data: {name: 'Wayne', age: 27},
+    success: function(data){
+        alert(data);
+    }
+});
 };
+// // Push new date & challenge info
+// function saveDate(date, loadedChallenge) {
+//   var object = [date, loadedChallenge]; /* Only for testing purposes */
+//   var datePush = new XMLHttpRequest();
+//   datePush.open("POST", "http://godske.one/OneADay/OneADay/date.json", true);
+//   datePush.setRequestHeader("Content-Type", "application/json");
+//   var newChallenge = JSON.stringify({name:"John Doe", time:"3am"});
+//   datePush.send(newChallenge);
+//   debugger;
+// };
 
 // Challenge randomizer
 

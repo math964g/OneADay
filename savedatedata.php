@@ -13,5 +13,4 @@ if (file_put_contents($myFile, $jsondata)) {
         echo "error";
 }
 
-
- ?>
+?>
