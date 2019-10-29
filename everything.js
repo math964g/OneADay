@@ -1,5 +1,13 @@
 console.log("JS running");
 
+// // Test if jQuery is initiated
+// if (jQuery) {
+//   alert("we are good to go");
+// }
+// else {
+//   alert("No jquery here")
+// }
+
 // Retrieve challenge
 
 function retrieveChallenge(yesterdayChallenge, date) {
@@ -105,9 +113,9 @@ function matchDates(today, yesterday, yesterdayChallenge) {
   }
 };
 
-clickMe();
+// clickMe();
 
-function clickMe() {
+// function clickMe() {
 
 
 $.ajax({
@@ -118,7 +126,8 @@ $.ajax({
         alert(data);
     }
 });
-};
+// };
+
 // // Push new date & challenge info
 // function saveDate(date, loadedChallenge) {
 //   var object = [date, loadedChallenge]; /* Only for testing purposes */
@@ -142,7 +151,7 @@ function getRandomChallenge(data, yesterdayChallenge, date) {
   }
 
   pasteChallenge(loadedChallenge);
-  saveDate(date, loadedChallenge);
+  // saveDate(date, loadedChallenge);
 
 }
 
