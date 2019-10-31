@@ -122,7 +122,7 @@ $.ajax({
     type: "POST",
     url: 'savedatedata.php',
     data: {name: 'Wayne', age: 27},
-    success: function(data){
+    success: function(data) {
         alert(data);
     }
 });
