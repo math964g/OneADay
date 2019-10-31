@@ -114,9 +114,10 @@ function matchDates(today, yesterday, yesterdayChallenge) {
 };
 
 clickMe();
+debugger;
 
 function clickMe() {
-
+debugger;
 $.ajax({
     type: "POST",
     url: 'savedatedata.php',
@@ -125,6 +126,7 @@ $.ajax({
         alert(data);
     }
 });
+debugger;
 };
 
 // // Push new date & challenge info
