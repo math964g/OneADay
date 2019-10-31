@@ -113,10 +113,9 @@ function matchDates(today, yesterday, yesterdayChallenge) {
   }
 };
 
-// clickMe();
+clickMe();
 
-// function clickMe() {
-
+function clickMe() {
 
 $.ajax({
     type: "POST",
@@ -126,7 +125,7 @@ $.ajax({
         alert(data);
     }
 });
-// };
+};
 
 // // Push new date & challenge info
 // function saveDate(date, loadedChallenge) {
