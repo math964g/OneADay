@@ -112,7 +112,7 @@ function matchDates(today, yesterday, yesterdayChallenge) {
     retrieveChallenge(yesterdayChallenge, date);
   }
 };
-
+debugger;
 clickMe();
 debugger;
 
