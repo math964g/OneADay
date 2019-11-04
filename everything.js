@@ -112,21 +112,22 @@ function matchDates(today, yesterday, yesterdayChallenge) {
     retrieveChallenge(yesterdayChallenge, date);
   }
 };
-debugger;
+
 clickMe();
-debugger;
 
 function clickMe() {
-debugger;
+
+let date = "1122"
+let loadedChallenge = "challenge this"
+
 $.ajax({
     type: "POST",
     url: 'savedatedata.php',
-    data: {name: 'Wayne', age: 27},
+    data: {date, loadedChallenge},
     success: function(data) {
-        alert(data);
+      console.log("POST successful");
     }
 });
-debugger;
 };
 
 // // Push new date & challenge info
