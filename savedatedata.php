@@ -14,7 +14,7 @@ echo "trial accessed";
 
 $dateCheck = fopen("newtest.txt", "w");
 
-$yesterdayDate = "insert json template wit h v alues here";
+$yesterdayDate = "insert json template with values here";
 echo $yesterdayDate;
 fwrite($dateCheck, $yesterdayDate);
 flose($dateCheck);
