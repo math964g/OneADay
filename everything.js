@@ -100,9 +100,15 @@ dateRequest.send();
 
 // Match date info
 function matchDates(today, yesterday, yesterdayChallenge) {
+  console.log("dates matching");
+  console.log(today);
+  console.log(yesterday);
   if (today == yesterday) {
+    console.log("Same day");
     pasteChallenge(yesterdayChallenge)
-  } else {
+  }
+  else {
+    console.log("New day");
     var date = today;
     retrieveChallenge(yesterdayChallenge, date);
   }
