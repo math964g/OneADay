@@ -67,11 +67,6 @@ function clock() {
   document.getElementById('clock').innerHTML = time;
   // Repeats it every second
   tick = setTimeout("clock()", 1000);
-
-  // Gets a new challenge at midnight
-  if (time == "00:00:00") {
-    getRandomChallenge();
-  }
 }
 
 // No-repeat
@@ -83,7 +78,7 @@ var today = new Date();
 getToday();
 
 function getToday() {
-  // Apperantly this ".toString()" decides the entire thing is a string and yeah otherwise i'd just show the number 2054 like wtf
+  // Apperantly this ".toString()" decides the entire thing is a string and yeah otherwise it would just show the number 2054 like wtf
   var day = today.getDate().toString();
   var month = today.getMonth();
   var year = today.getFullYear();
@@ -113,12 +108,16 @@ function matchDates(today, yesterday, yesterdayChallenge) {
   }
 };
 
-clickMe();
 
-function clickMe() {
+function saveChallengeData(date, loadedChallenge) {
 
-let date = "1122"
-let loadedChallenge = "challenge this"
+console.log("logging data twice");
+console.log(date);
+console.log(loadedChallenge);
+
+
+// let date = "1122"
+// let loadedChallenge = "challenge this"
 
 $.ajax({
     type: "POST",
@@ -153,7 +152,11 @@ function getRandomChallenge(data, yesterdayChallenge, date) {
   }
 
   pasteChallenge(loadedChallenge);
-  // saveDate(date, loadedChallenge);
+  saveChallengeData(date, loadedChallenge);
+
+console.log("logging data");
+  console.log(loadedChallenge);
+  console.log(date);
 
 }
 
