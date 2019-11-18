@@ -121,7 +121,7 @@ console.log("logging data twice");
 console.log(date);
 console.log(loadedChallenge);
 
-
+console.log("hey");
 // let date = "1122"
 // let loadedChallenge = "challenge this"
 
