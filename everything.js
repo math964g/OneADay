@@ -90,6 +90,7 @@ var dateRequest = new XMLHttpRequest();
 dateRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/date.json");
 dateRequest.onload = function() {
   var dateData = JSON.parse(dateRequest.responseText);
+  console.log("DATE CHECKER" + dateData);
   console.log(dateData[0]);
   var yesterday = dateData[0].date;
   console.log(dateData[1]);
