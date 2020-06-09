@@ -88,7 +88,7 @@ function getToday() {
 // Retrieve date and challenge info
 var dateRequest = new XMLHttpRequest();
 // dateRequest.open("GET", "https://raw.githubusercontent.com/math964g/OneADay/master/date3.json");
-dateRequest.open("GET", "http://godske.one/OneADay/dateAndChallengeData.json");
+dateRequest.open("GET", "http://mathiasgodske.com/OneADay/date.json");
 dateRequest.onload = function() {
   var dateData = JSON.parse(dateRequest.responseText);
   console.log("DATE CHECKER: " + dateData);
